@@ -1,6 +1,7 @@
 fetch('http://localhost:3000/films')
     .then(response => response.json())
     .then(movies => {
+        renderMoviesList(movies );
         // Create a card for each movie and append to the container
         const filmsContainer = document.getElementById('films-container');
         movies.forEach(movie => {
@@ -23,7 +24,7 @@ fetch('http://localhost:3000/films')
             const buyButton = document.createElement('button');
             buyButton.textContent = 'Buy Ticket';
             buyButton.addEventListener('click', () => {
-                buyTicket(movie.id)++;
+                buyTicket(movie.id);
             });
             const cardContentDiv = document.createElement('div');
             cardContentDiv.classList.add('card-content')
@@ -41,7 +42,7 @@ fetch('http://localhost:3000/films')
 
 // Render the list of movies in the new container
 function renderMoviesList(movies) {
-    const movieListContainer = document.getElementById('movie-list');
+    const movieListContainer = document.getElementById("movie-list");
     const movieList = document.createElement('ul');
     movieList.classList.add('movie-list');
 
@@ -62,18 +63,28 @@ function renderMoviesList(movies) {
 
 
 function buyTicket(movieId) {
-    const data = { movieId };
-    fetch('http://localhost:3000/buy-ticket', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+    const url = `http://localhost:3000/films/${movieId}`
+    fetch(url, {
+       
     })
         .then(response => response.json())
         .then(result => {
             // Update the ticket count on the page
-            const tickets = document.querySelector(`[data-movie-id="${movieId}"] .tickets`);
-            const availableTickets = result.capacity - result.tickets_sold;
-            tickets.textContent = `${availableTickets} tickets available`;
+            // const tickets = document.querySelector(`[data-movie-id="${movieId}"] .tickets`);
+            // const availableTickets = result.capacity - result.tickets_sold;
+            console.log(result)
+            result.tickets_sold++;
+            console.log(result)
+            //tickets.textContent = `${availableTickets} tickets available`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(result)
+            }).then(c=>c.json).catch(e=>console.log(e))
+            
         })
         .catch(error => {
             console.error('Error buying ticket:', error);

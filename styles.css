@@ -43,3 +43,17 @@ body{
     color: whitesmoke;
     border: 0;
 }
+.movie-list{
+    font-size: larger;
+    padding: 0;
+    list-style-type: none;
+    margin:0;
+}
+
+.movie-list li{
+    padding: 5px 10px;
+    background-color:rgb(60, 64, 68);
+    color: whitesmoke;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
