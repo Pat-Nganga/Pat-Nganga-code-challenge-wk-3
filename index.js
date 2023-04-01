@@ -1,7 +1,7 @@
 fetch('http://localhost:3000/films')
     .then(response => response.json())
     .then(movies => {
-        renderMoviesList(movies );
+        renderMoviesList(movies);
         // Create a card for each movie and append to the container
         const filmsContainer = document.getElementById('films-container');
         movies.forEach(movie => {
@@ -60,12 +60,47 @@ function renderMoviesList(movies) {
 }
 
 
+function showMovieDetails(movie) {
+    const filmsContainer = document.getElementById('films-container');
+    filmsContainer.innerHTML = "";
+    const card = document.createElement('div');
+    card.classList.add('card-detail');
+    const img = document.createElement('img');
+    img.src = movie.poster;
+    img.alt = movie.title;
 
+    const title = document.createElement('h2');
+    title.textContent = movie.title;
+    const runtime = document.createElement('p');
+    const availableTickets = movie.capacity - movie.tickets_sold;
+    runtime.textContent = `${movie.runtime} min`;
+    const showtime = document.createElement('p');
+    showtime.textContent = `Time: ${movie.showtime}  |  ${availableTickets} tickets available`;
+
+    //   tickets.textContent = `${availableTickets} tickets available`;
+    // const buyButton = document.createElement('button');
+    // buyButton.textContent = 'Buy Ticket';
+    // buyButton.addEventListener('click', () => {
+    //     buyTicket(movie.id);
+    // });
+    const cardContentDiv = document.createElement('div');
+    cardContentDiv.classList.add('card-content')
+    cardContentDiv.appendChild(title);
+    cardContentDiv.appendChild(runtime);
+    cardContentDiv.appendChild(showtime);
+    // cardContentDiv.appendChild(buyButton);
+
+    card.appendChild(img);
+    card.appendChild(cardContentDiv);
+
+    filmsContainer.appendChild(card);
+
+}
 
 function buyTicket(movieId) {
     const url = `http://localhost:3000/films/${movieId}`
     fetch(url, {
-       
+
     })
         .then(response => response.json())
         .then(result => {
@@ -79,12 +114,12 @@ function buyTicket(movieId) {
             fetch(url, {
                 method: 'PUT',
                 headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(result)
-            }).then(c=>c.json).catch(e=>console.log(e))
-            
+            }).then(c => c.json).catch(e => console.log(e))
+
         })
         .catch(error => {
             console.error('Error buying ticket:', error);
