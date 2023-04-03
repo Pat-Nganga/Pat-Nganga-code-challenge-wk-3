@@ -9,8 +9,7 @@ The following technologies were used to build this web application:
 3.CSS
 
 
-### Usage
-## **USAGE OF THE APP**
+### **USAGE OF THE APP**
 - Fork and clone the repository into your local machine.
 - Install the json server using  the command; npm install json-server.
 - Run the json server using the command ; json-server --watch db.json.
