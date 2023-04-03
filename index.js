@@ -62,7 +62,7 @@ function renderMoviesList(movies) {
 
 function showMovieDetails(movie) {
     const filmsContainer = document.getElementById('films-container');
-    filmsContainer.innerHTML = "";
+    filmsContainer.innerHTML=" ";
     const card = document.createElement('div');
     card.classList.add('card-detail');
     const img = document.createElement('img');

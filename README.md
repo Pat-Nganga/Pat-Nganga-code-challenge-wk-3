@@ -1,5 +1,6 @@
 # **FLATDANGO**
-This is a web application that allows users to buy movie tickets. It fetches the list of available movies from the backend server and displays them on the page. Users can select a movie from the list and view its details, such as the title, runtime, showtime, and number of available tickets. They can also buy tickets for the movie.
+This is a web application that allows users to buy movie tickets. It fetches the list of available movies from the backend server and displays them on the page. Users can select a movie from the list and view its details, such as the title, runtime, showtime, and number of available tickets. 
+to buy the ticket refresh the page go to the home ppage and buy the ticket from there.
 
 ## Technologies Used
 The following technologies were used to build this web application:

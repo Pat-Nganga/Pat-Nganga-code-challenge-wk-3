@@ -10,6 +10,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
+  
 .menu {
     width: 100%;
     height: 100px;
@@ -22,6 +23,8 @@
     display: grid;
     grid-template-columns: 10% 90%;
     grid-gap: 5px;
+    
+
   }
 
 #films-container{
@@ -36,6 +39,7 @@
     box-shadow: 2px 2px 20px black;
     border-radius: 5px; 
     margin: 2%;
+  
 }
 
 .card img{ 
@@ -80,8 +84,8 @@
     color: whitesmoke;
     margin-top: 5px;
     margin-bottom: 5px;
-    box-shadow: 2px 2px 3px #666;
-    cursor: pointer;
+    display: block;
+   
 }
 .movie-list li:hover{
     background-color: pink;
